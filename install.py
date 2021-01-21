@@ -181,7 +181,7 @@ notify("Checking for Java...")
 javaBin = chooseExecutable("Java, version 1.6.0_04 or later",
                            execName = "java",
                            execExtraDirs = KNOWN_PLATFORMS[THIS_PLATFORM].get("JAVA_HOME_CANDIDATES"),
-                           versionChecker = ('java version "(?P<major>[0-9]+)(\.(?P<minor>[0-9]+)(\.(?P<subminor>[0-9]+)(_(?P<subsubminor>[0-9]+))?)?)?"', '"%s" -version 2>&1', ("major", "minor", "subminor", "subsubminor"), (1, 6, 0, 4), None),
+                           versionChecker = ('(java|openjdk) version "(?P<major>[0-9]+)(\.(?P<minor>[0-9]+)(\.(?P<subminor>[0-9]+)(_(?P<subsubminor>[0-9]+))?)?)?"', '"%s" -version 2>&1', ("major", "minor", "subminor", "subsubminor"), (1, 6, 0, 4), None),
                            failureString = "is not a recent enough version of Java.",
                            execFailureString = "No appropriate version of Java found. Exiting.",
                            exitOnFailure = True)
