@@ -1590,13 +1590,15 @@ class PIIDateReplacer(PIIPatternReplacer):
                     if not d.dateObj:
                         continue
                     try:
-                        sdelta = d.dateObj.dt - datetime.datetime(d.dateObj.dt.year, 1, 1)
+                        # sdelta = d.dateObj.dt - datetime.datetime(d.dateObj.dt.year, 1, 1)
+                        sdelta = d.dateObj.dt.date() - datetime.date(d.dateObj.dt.date().year,1,1)
                         if sdelta.days < startDelta:
                             startDelta = sdelta.days
                     except TypeError:
                         pass
                     try:
-                        edelta = datetime.datetime(d.dateObj.dt.year, 12, 31) - d.dateObj.dt
+                        # edelta = datetime.datetime(d.dateObj.dt.year, 12, 31) - d.dateObj.dt
+                        edelta = datetime.date(d.dateObj.dt.date().year, 12, 31) - d.dateObj.dt.date()
                         if edelta.days < endDelta:
                             endDelta = edelta.days
                     except TypeError:
