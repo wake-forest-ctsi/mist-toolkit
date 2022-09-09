@@ -93,7 +93,7 @@ class ClearDigestionStrategy(DigestionStrategy):
             pat.dateObj = dateutil.parser.digest(seed)
             pat.deltaDay = 0
             pat._fillPattern(pat.dateObj)
-        except (ValueError, IndexError, AssertionError):
+        except (ValueError, IndexError, AssertionError, OverflowError):
             # This used to be ValueError, but all sorts of other
             # errors can arise when bad parsing happens.
             # print "Couldn't digest " + seed        
